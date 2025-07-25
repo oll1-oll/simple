@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025年7月26日</title>
+</head>
+<style>
+    .birthday{
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    .page5{
+        background-color: black;
+        height: 100vh;
+        width: 100vw;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .candle-container{
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .candle{
+        background-image: url("蜡烛.png");
+        width: 200px; 
+        height: 200px; 
+        background-size: contain; 
+        background-repeat: no-repeat;
+    }
+    .flame{
+        width: 100px;
+        height: 200px;
+        background-image:url("火苗.png") ;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 20px;
+        left: 50px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    .hint{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,50%);
+        color: white;
+        font-size: 24px;
+        text-align: center;
+        max-width: 80%;
+    }
+    .page4{
+        background-image: url("生日蛋糕.webp");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 2s ease;
+    }
+    .calender{
+        float: right;
+    }
+    .today{
+        display: inline-block;
+        padding: 2px 6px;
+        border-radius: 50%;
+        text-align: center;
+    }
+    .envelope{
+        width: 200px; /* 信笺宽度 */
+        height: auto; /* 根据内容调整高度 */
+        padding: 20px; /* 内边距 */
+        left: 20px;
+        bottom: 20px;
+        background-color: #f9f5e9; /* 背景色 */
+        border: 2px solid #f8ddaf; /* 边框 */
+        position: fixed; 
+        opacity: 0.7;
+    }
+    .words{
+        margin-top: 20px; /* 内容顶部边距 */
+        font-size: 16px; /* 字体大小 */
+        line-height: 1.6; /* 行高 */
+    }
+    .words p{
+        margin-bottom: 10px; /* 段落底部边距 */
+        text-decoration: underline; /* 文本加下划线 */
+        color: #333; /* 文本颜色 */        
+    }
+</style>
+<body class="birthday">
+    <div class="page5" id="page5">
+        <div class="candle-container" id="candle-container">
+            <div class="candle" id="candle"></div>
+            <div class="flame" id="flame"></div>
+        </div>
+        <div class="hint" id="hint">试试点击蜡烛</div>
+    </div>
+
+    <div class="page4" id="page4">
+    <table border="2" class="calender">
+        <th>
+            日
+        </th>
+        <th>
+            一
+        </th>
+        <th>
+            二
+        </th>
+        <th>
+            三
+        </th>
+        <th>
+            四
+        </th>
+        <th>
+            五
+        </th>
+        <th>
+            六
+        </th>
+        <tr>
+            <td> </td>
+            <td> </td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        
+        <tr>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+
+        <tr>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+            <td>16</td>
+            <td>17</td>
+            <td>18</td>
+            <td>19</td>
+        </tr>
+
+        <tr>
+            <td>20</td>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+            <td>24</td>
+            <td>25</td>
+            <td class="today">26</td>
+        </tr>
+
+        <tr>
+            <td>27</td>
+            <td>28</td>
+            <td>29</td>
+            <td>30</td>
+            <td>31</td>
+            <td> </td>
+            <td> </td>
+        </tr>
+    </table>
+    <div class="envelope">
+        <div class="words">
+        <p>lyv同学：生日快乐！</p>            
+        <p>哈哈哈哈哈哈哈哈哈！</p>            
+        <p>祝你一直能活 天天开心！！</p>            
+        <p>......此处省略八万字的心意</p>            
+        <p>（ps:
+            艺术细胞不够 凑合一下 orz）
+        </p>
+        <p>dog</p>            
+        </div>
+    </div>
+    </div>
+    <script>
+        const page5 = document.getElementById('page5')
+        const page4 = document.getElementById('page4');
+        const candle_container = document.getElementById('candle-container');
+        const flame = document.getElementById('flame');
+        const hint = document.getElementById('hint');
+        candle_container.addEventListener('click',function(){
+            flame.style.opacity = '1';
+            hint.style.display = 'none';
+            setTimeout(function(){
+                page5.style.display = 'none';
+                page4.style.opacity = '1';
+
+            },1000)
+        })
+
+    </script>
+</body>
+</html>

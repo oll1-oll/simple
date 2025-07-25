@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>！！警告！！ 您正在访问不安全页面！！</title>
+    <style>
+        .warning{
+            overflow-x: hidden !important;
+            background-image:url("外星人入侵.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .page1{
+            height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            background-image: url('外星人入侵.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .note1{
+            color: brown;
+            font-size: clamp(30px,15vw,80px);
+            text-align: center;
+            z-index: 1;
+            margin: 0; /*避免上下溢出*/
+            line-height: 1.2;
+        }
+        .arrow {
+            position: absolute;
+            left: 50%;
+            bottom: 50px;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+        .arrow>.note2{
+            color: aliceblue;
+            font-size: clamp(14px,5vw,30px);
+            position: relative;
+            margin: 0 0 10px 0;
+            left: 0;
+            bottom: 0;
+            opacity: 0.7;
+            z-index: 1;
+        }
+        .note2:hover{
+            transform: scale(1.2);
+        }
+        /* .downarrow{
+            width: 30px;
+            position: absolute;
+            left: 50%;
+            bottom: -50px;
+            transform: translateX(-50%);
+            opacity: 0.7;
+            transition:0.3s ease;
+        }
+        /* .downarrow:hover{
+            transform: scale(1.2); 
+        } */
+        .page2{
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            background-image: url('安全舱.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transform: translateY(100vh);
+            transition: transform 1s ease,opacity 1s ease;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .page2 h1{
+            font-size: clamp(24px,12vw,60px);
+        }
+        .page2 p{
+            font-size: clamp(14px,6vw,30px);
+        }
+        .page2.show{
+            transform:translateY(0);
+            opacity: 1;
+        }
+        .page3{
+            background-color: rgb(84, 122, 192 );
+            width: 80%;
+            max-width: 500px;
+            min-width: 280px;
+            padding: 20px;
+            border-radius: 10px;
+            position:fixed;
+            top: 50%;
+            left: 50%;
+            z-index: 100;
+            transform: translate(-50%,-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: transform 1s ease,opacity 1s ease;
+            opacity: 0;
+        }
+        .page3.name,
+        .page3.birth{
+            font-size: clamp(12px,2vw,16px);
+        }
+        .page3.show{
+            transform:translate(-50%,-50%) scale(1.1);
+            opacity: 0.9;
+        }
+
+    </style>
+</head>
+<body class="warning">
+    <div class="page1">
+        <div class="note1">
+        最高级别警报！！最高级别警报！！
+        <br>
+        蓝星遭到未知文明生命入侵！！
+        <br>
+        请幸存者尽快逃离！！
+        </div>
+        <div class="arrow" >
+            <p class="note2">
+            下滑逃离
+            </p>
+            <!-- <div class="downarrow">
+            <img src="透明箭头.png" alt="" >
+            </div> -->
+        </div>
+        <div style="background-color: aliceblue;">
+        </div>
+    </div>
+    <div class="page2">
+            <h1>安全区</h1>
+            <p>请进行安全舱人机验证</p>
+    </div>
+    <div class="page3" id="page3">
+       <label class="name">幸存者12138</label><input type="text" placeholder="请输入姓名" style="display: inline-block; height: 30px;">
+       <br>
+       <br>
+       <label class="birth">降生日</label><input type="text" placeholder="年.月.日" style="display: inline-block; height: 30px;" >
+       <br>
+       <br>
+       <button class="opendoor" id="opendoor" style=" height: 30px;">验证开门</button>
+    </div>
+    <script>
+        let page2Visible = false;
+        window.addEventListener('wheel',function(event){
+            if(event.deltaY>0){
+                //向下滚动
+                document.querySelector('.page2').classList.add('show');
+                page2Visible = true;
+            }
+            else if(event.deltaY<0){
+                //向上滚动
+                document.querySelector('.page2').classList.remove('show');
+                page2Visible = false;
+            }
+        });
+        //在page2出现后点击才能出现page3
+        setTimeout(function(){
+            document.querySelector('.page2').addEventListener('click',function(){
+                if(page2Visible){
+                    document.getElementById('page3').classList.add('show');
+                }
+            })
+        },1000)
+        var element_door = document.getElementById('opendoor');
+        element_door.addEventListener('click',function(){
+            const name = document.querySelector('input[placeholder="请输入姓名"]').value;//获取输入框的值
+            const birth = document.querySelector('input[placeholder="年.月.日"]').value;
+            if(name&&birth){
+                window.location.href='生日.html','_blank';
+            }
+            else{
+                alert('被猜中了！老实填好吧！！');
+            }
+        })
+    </script>
+</body>
+</html>
